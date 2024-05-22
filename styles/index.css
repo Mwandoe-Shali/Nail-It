@@ -7,7 +7,7 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: url('assets/sparks.jpg');
+    background: url('../assets/sparks.jpg');
     backdrop-filter: brightness(0.5);
     display: flex;
     flex-direction: column;
