@@ -83,12 +83,15 @@ nav h2 i {
     margin: auto 10px; /* Center container vertically to the left */
     width: fit-content; /* Adjust container width to fit content */ 
 }
-  
-.LinksHomepage{
-    display: flex; /* Arrange buttons horizontally */
-    flex-direction: row;
+
+.container p {
+    color: antiquewhite; /* Change text color */
+    font-size: 1.2rem; /* Change text size */
+    margin-bottom: 10px;
+}
+
+.button-container a {
     justify-content: space-between; /* Distribute buttons evenly */
-    background-color: #f0f0f0; /* Light gray background (optional) */
     border-radius: 10px; /* Rounded corners (optional) */
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.5);
@@ -97,3 +100,4 @@ nav h2 i {
     margin-top: 20px;
     text-decoration: none; /* Remove underline from links */;
 }
+
