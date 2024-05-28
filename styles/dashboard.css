@@ -8,24 +8,30 @@ body, h1, h2, h3, ul, li, table, th, td {
 body {
     font-family: Arial, sans-serif;
     height: 100vh;
-    overflow-y: auto;
+    /* overflow-y: auto; */
+    overflow: hidden;
 }
 
 header {
     background-color: #000;
     color: antiquewhite;
-    padding: 10px 10px;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-family: 'Poppins', sans-serif;
+    /* new changes */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .nav-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 95%;
 }
 
 .logo {
@@ -70,6 +76,8 @@ header {
 
 .dashboard {
     display: flex;
+    margin-top: 48px; /* Adjust this if header height changes */
+    height: calc(100vh - 68px);
 }
 
 .sidebar {
@@ -77,11 +85,15 @@ header {
     max-width: fit-content;
     background-color: #2c3e50;
     color: #ecf0f1;
-    height: calc(100vh - 69px);
+    height: calc(100vh - 68px);
+    /* height: 100%; */
     padding: 10px;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    position: fixed;
+    top: 48px; /* Adjust this if header height changes */
+    bottom: 0;
 }
 
 .sidebar h2 {
@@ -134,6 +146,8 @@ header {
     background-color: #ecf0f1;
     padding: 20px;
     overflow-y: auto;
+    margin-left: 220px; /* Match the sidebar width */
+    height: calc(100vh - 69px);
 }
 
 .content-header {
