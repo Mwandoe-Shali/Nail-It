@@ -109,8 +109,8 @@ footer{
     justify-content: space-between; /* Distribute buttons evenly */
     border-radius: 10px; /* Rounded corners (optional) */
     padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: antiquewhite;
+    background-color: #f97316;
+    color: #FFEDD5;
     margin: 10px;
     margin-top: 20px;
     text-decoration: none; /* Remove underline from links */;
