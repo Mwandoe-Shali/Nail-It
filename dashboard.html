@@ -171,10 +171,67 @@
             <input type="text" id="buildingType" name="buildingType" required>
             <label for="metadataDate">Date:</label>
             <input type="date" id="metadataDate" name="metadataDate" required>
-            <button type="submit">Add Site</button>
+            <button type="submit" id="add-site-btn">Add Site</button>
             <button type="button" id="cancelButton">Cancel</button>
         </form>
     </div>
+
+    <!-- UPDATE FORM -->
+    <div id="updateFormContainer" class="update-form-container">
+        <form id="updateForm" class="update-form">
+            <h2>Edit</h2>
+            <label for="materialName">Material Name:</label>
+            <input type="text" id="materialName" name="materialName" required>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" required>
+            <label for="units">Units:</label>
+            <input type="text" id="units" name="units" required>
+            <label for="metadataDate">Date:</label>
+            <input type="date" id="lastUpdated" name="lastUpdated" required>
+            <button type="submit" id="update-material-btn">Update</button>
+            <button type="button" id="updateCancelButton">Cancel</button>
+        </form>
+    </div>
+    <!-- NEW MATERIAL FORM -->
+    <div id="materialFormContainer" class="material-form-container">
+        <form id="materialForm" class="material-form">
+            <h2>New Material</h2>
+            <label for="materialName">Material Name:</label>
+            <input type="text" id="materialName" name="materialName" required>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" required>
+            <label for="units">Units:</label>
+            <input type="text" id="units" name="units" required>
+            <label for="metadataDate">Date:</label>
+            <input type="date" id="lastUpdated" name="lastUpdated" required>
+            <button type="submit" id="material-btn">Submit</button>
+            <button type="button" id="materialCancelButton">Cancel</button>
+        </form>
+    </div>
+    <!-- Delete material confirmation -->
+    <div id="deleteFormContainer" class="del-site-form-container">
+        <form id="siteFor" class="delete-form">
+            <h3>Are you sure you want to delete?</h3>
+            <button type="button" id="delCancelButton">Cancel</button>
+            <button type="button" id="del-yes-btn">Yes</button>
+        </form>
+    </div>
+<!-- 
+    <div class="add-site-form">
+        ADD SITE
+    </div>
+  
+    <div class="add-material-form">
+      ADD MATERIAL
+    </div>
+  
+    <div class="update-material">
+      UPDATE MATERIAL
+    </div>
+  
+    <div class="delete-material-notification">
+      Deleted successfully
+    </div> -->
 
     <script src="dashboard.js" type="module"></script>
 </body>

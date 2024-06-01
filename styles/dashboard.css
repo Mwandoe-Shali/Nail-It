@@ -9,7 +9,7 @@ body {
     font-family: Arial, sans-serif;
     height: 100vh;
     /* overflow-y: auto; */
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 header {
@@ -216,23 +216,23 @@ td button:hover {
     align-items: center;
 }
 
-.site-form {
+/* .site-form, .update-form, .material-form {
     background: white;
     padding: 20px;
     border-radius: 5px;
     width: 300px;
-}
+} */
 
-.site-form h2 {
+.site-form h2, .update-form h2, .material-form h2{
     margin-bottom: 20px;
 }
 
-.site-form label {
+.site-form label, .update-form label, .material-form label, .material-{
     display: block;
     margin-bottom: 5px;
 }
 
-.site-form input {
+.site-form input, .update-form input, .material-form input{
     width: 100%;
     padding: 8px;
     margin-bottom: 15px;
@@ -240,7 +240,7 @@ td button:hover {
     border: 1px solid #ccc;
 }
 
-.site-form button {
+.site-form button, .update-form button, .material-form button {
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -250,7 +250,7 @@ td button:hover {
     transition: background-color 0.3s;
 }
 
-.site-form button[type="button"] {
+.site-form button[type="button"], .update-form button[type="button"], .material-form button[type="button"] {
     background-color: #e74c3c;
     margin-left: 10px;
 }
@@ -260,5 +260,44 @@ td button:hover {
 }
 
 .site-form button[type="button"]:hover {
+    background-color: #c0392b;
+}
+
+.del-site-form-container, .update-form-container, .material-form-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    
+}
+
+.del-site-form-container  h3{
+    margin-bottom: 10px; 
+    
+}
+.delete-form, .update-form, .material-form, .site-form{
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    position: absolute;
+    top: 25%;
+    left: 45%;
+    /* margin: 0 auto; */
+    
+}
+#delCancelButton, #del-yes-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#del-yes-btn {
     background-color: #c0392b;
 }
