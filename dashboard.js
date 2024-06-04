@@ -2,7 +2,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import { getDatabase, ref, onValue,push, get, update, remove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"
 
 const appSettings = {
-    databaseURL: "https://nail-it-d575b-default-rtdb.firebaseio.com/"
+    databaseURL: "https://nail-it-8f766-default-rtdb.asia-southeast1.firebasedatabase.app/"
+
 }
 const app = initializeApp(appSettings)
 const db = getDatabase(app)
