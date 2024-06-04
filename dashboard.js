@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"
-import { getDatabase, ref, onValue,push } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"
+import { getDatabase, ref, onValue,push, get, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"
 
 const appSettings = {
     databaseURL: "https://nail-it-d575b-default-rtdb.firebaseio.com/"
@@ -68,35 +68,6 @@ delYesBtn.addEventListener('click', () =>
         delForm.style.display = 'none'
     }
 )
-// Update FUNCTIONALITY
-
-const updateButtons = [];
-
-for (const row of tableBody.rows) {
-  const updateButton = row.querySelector("button i.fa-regular.fa-pen-to-square");
-  if (updateButton) {
-    updateButtons.push(updateButton);
-  }
-}
-
-const updateForm = document.getElementById('updateFormContainer')
-for (const button of updateButtons) {
-    button.addEventListener("click", function() {
-        updateForm.style.display = 'block';
-      
-    })
-  }
-  
-const updateCancelButton = document.getElementById('updateCancelButton')
-const updateBtn = document.getElementById('update-material-btn')
-updateCancelButton.addEventListener('click', () =>{
-    updateForm.style.display = 'none'
-})
-updateBtn.addEventListener('click', () =>
-    {
-        updateForm.style.display = 'none'
-    }
-)
 // NEW MATERIAL
 const materialForm = document.getElementById('materialFormContainer')
 const addMaterialButton = document.getElementById('addMaterialButton')
@@ -115,7 +86,7 @@ materialBtn.addEventListener('click', () => {
     const quantity = document.getElementById('mQuantity').value;
     const units = document.getElementById('mUnits').value;
     const lastUpdated = document.getElementById('mLastUpdated').value;
-  
+    
     // Now access and process the form values
     if (materialName && quantity && units && lastUpdated) {
       push(materialsRef, { name: materialName, quantity, units, lastUpdated });
@@ -127,48 +98,139 @@ materialBtn.addEventListener('click', () => {
   });
   
 
-// Fetching materials from firebase
-function addMaterialRow(material) {
+  // Fetching materials from firebase
+  
+  function addMaterialRow(materialId, materialData) {
     const tableBody = document.getElementById("materialTableBody");
     const newRow = document.createElement("tr");
   
-    // Create table cells (TD elements) for each property
+    // Create table cells for material data
     const nameCell = document.createElement("td");
-    nameCell.textContent = material.name;
+    nameCell.textContent = materialData.name;
     const quantityCell = document.createElement("td");
-    quantityCell.textContent = material.quantity;
+    quantityCell.textContent = materialData.quantity;
     const unitsCell = document.createElement("td");
-    unitsCell.textContent = material.units;
+    unitsCell.textContent = materialData.units;
     const lastUpdatedCell = document.createElement("td");
-    lastUpdatedCell.textContent = material.lastUpdated;
+    lastUpdatedCell.textContent = materialData.lastUpdated;
   
-    // Add update and delete buttons (optional)
+    // Create update and delete buttons with event listeners
     const updateCell = document.createElement("td");
     updateCell.innerHTML = "<button><i class='fa-regular fa-pen-to-square'></i></button>";
     const deleteCell = document.createElement("td");
     deleteCell.innerHTML = "<button><i class='fas fa-trash-alt'></i></button>";
   
-    // Append cells to the new row
+    const updateButton = updateCell.querySelector("button");
+    updateButton.addEventListener("click", function() {
+      // Handle update functionality (pass materialId)
+      const materialToUpdate = ref(db, 'materials/' + materialId);
+      const updateForm = document.getElementById('updateFormContainer')
+      const materialName = document.getElementById('uMaterialName');
+      const quantity = document.getElementById('uQuantity');
+      const units = document.getElementById('uUnits');
+      const lastUpdated = document.getElementById('uLastUpdated');
+      get(materialToUpdate)
+      .then((dataSnapshot) => {
+          if (dataSnapshot.exists()) {
+                updateForm.style.display = 'block'; 
+                const materialData = dataSnapshot.val();
+                console.log("Fetched material data:", materialData);
+            
+                materialName.value = materialData.name
+                quantity.value = materialData.quantity
+                units.value = materialData.units
+                lastUpdated.value = materialData.lastUpdated
+
+        } else {
+            console.log("Material not found!");
+            // Handle case where material with the ID doesn't exist
+        }
+    })
+    .catch((error) => {
+        console.error("Error fetching material data:", error);
+    });
+    
+
+        
+
+        const updateCancelButton = document.getElementById('updateCancelButton')
+        const updateBtn = document.getElementById('update-material-btn')
+        updateCancelButton.addEventListener('click', () =>{
+            updateForm.style.display = 'none'
+        })
+        updateBtn.addEventListener('click', () =>
+            {
+                update(materialToUpdate, {materialName:materialName.value, quantity:quantity.value, units:units.value, lastUpdated:lastUpdated.value})
+                updateForm.style.display = 'none'
+            }
+        )
+
+
+
+        
+    });
+  
+    const deleteButton = deleteCell.querySelector("button");
+    deleteButton.addEventListener("click", function() {
+      // Handle delete functionality (pass materialId)
+      console.log("Delete clicked for material:", materialId);
+      // You can implement logic to delete the material from Firebase using materialId
+    });
+  
+    // Append cells to the new row and the row to the table body
     newRow.appendChild(nameCell);
     newRow.appendChild(quantityCell);
     newRow.appendChild(unitsCell);
     newRow.appendChild(lastUpdatedCell);
     newRow.appendChild(updateCell);
     newRow.appendChild(deleteCell);
-  
-    // Append the new row to the table body
     tableBody.appendChild(newRow);
   }
-
   
-onValue(materialsRef, (snapshot) => {
-    let materialData = Object.values(snapshot.val());
-    for (const material of materialData) {
-        addMaterialRow(material);
+  onValue(materialsRef, (snapshot) => {
+    const materialData = snapshot.val();
+  
+    if (materialData) {
+      document.getElementById("materialTableBody").innerHTML = ""; // Clear existing rows before adding new ones
+      for (const materialId in materialData) {
+        const material = materialData[materialId];
+        addMaterialRow(materialId, material);
       }
-    
-})
-console.log(app)
+    } else {
+      console.log("No materials found!");
+    }
+  });
+  
+// Update FUNCTIONALITY
+
+const updateButtons = [];
+
+for (const row of tableBody.rows) {
+  const updateButton = row.querySelector("button i.fa-regular.fa-pen-to-square");
+  if (updateButton) {
+    updateButtons.push(updateButton);
+  }
+}
 
 
 
+onValue(materialsRef, (snapshot) => {
+    const materialData = snapshot.val();
+  
+    if (materialData) {
+      // Loop through each child node (material)
+      for (const materialId in materialData) {
+        const material = materialData[materialId];
+  
+        // Access the data and ID for each material
+        // console.log("Material ID:", materialId);
+        // console.log("Material Data:", material);
+  
+        // You can use the material data and ID for further processing (e.g., adding rows to a table)
+        // Implement your logic to add rows to the table here
+        // For example, call your addMaterialRow function with material and materialId
+      }
+    } else {
+      console.log("No materials found!");
+    }
+  });
