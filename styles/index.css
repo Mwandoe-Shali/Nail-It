@@ -1,37 +1,27 @@
-* {
+/* Reset some default styles */
+body, h1, h2, p, ul, li, a, img {
     margin: 0;
     padding: 0;
-    box-sizing: content-box;
+    box-sizing: border-box;
 }
 
 body {
+    font-family: Arial, sans-serif;
     margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: url('../assets/sparks.jpg');
-    backdrop-filter: brightness(0.5);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
+    background-color:antiquewhite;
 }
-
 
 header {
     background-color: #000;
-    color: antiquewhite;
+    color: #fff;
     padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Poppins', sans-serif;
-    /* new changes */
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .nav-bar {
@@ -45,6 +35,7 @@ header {
     font-size: 24px;
     font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
+    color: antiquewhite;
 }
 
 .nav-links {
@@ -81,38 +72,109 @@ header {
     cursor: pointer;
 }
 
-footer{
-    color: antiquewhite;
-    position: fixed;
-    height: 30px;
-    width: 100%;
-    bottom: 0;
+.intro-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('../assets/sparks.jpg') no-repeat center center/cover;
+    color: #322310;
+    text-align: center;
+    padding: 20px;
+}
+
+.intro-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.intro-content p {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #d3a269;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.feature-section {
+    padding: 60px 20px;
     text-align: center;
 }
 
-.container {
-    text-align: left; /* Center elements horizontally */
-    display: flex; /* Arrange elements horizontally */
-    flex-direction: column; /* Stack elements vertically */
-    gap: 1em; /* Add spacing between elements */
-    margin: auto 10px; /* Center container vertically to the left */
-    width: fit-content; /* Adjust container width to fit content */ 
+.feature-section h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
 }
 
-.container p {
-    color: antiquewhite; /* Change text color */
-    font-size: 1.2rem; /* Change text size */
+.feature {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.feature img {
+    width: 50%;
+    margin-right: 20px;
+}
+
+.feature-info {
+    text-align: left;
+}
+
+.feature-info h3 {
+    font-size: 28px;
     margin-bottom: 10px;
 }
 
-.button-container a {
-    justify-content: space-between; /* Distribute buttons evenly */
-    border-radius: 10px; /* Rounded corners (optional) */
-    padding: 10px;
-    background-color: #f97316;
-    color: #FFEDD5;
-    margin: 10px;
-    margin-top: 20px;
-    text-decoration: none; /* Remove underline from links */;
+.feature-info p {
+    font-size: 18px;
 }
 
+.about-section {
+    padding: 60px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.social-links {
+    margin-bottom: 20px;
+}
+
+.social-links a {
+    color: #3498db;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .feature {
+        flex-direction: column;
+    }
+
+    .feature img {
+        margin: 0 0 20px 0;
+    }
+}
