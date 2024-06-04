@@ -109,9 +109,7 @@ const materialBtn = document.getElementById('material-btn')
 materialCancelButton.addEventListener('click', () =>{
     materialForm.style.display = 'none'
 })
-materialBtn.addEventListener('click', (event) => {
-    // Prevent default form submission
-    event.preventDefault();
+materialBtn.addEventListener('click', () => {
   
     const materialName = document.getElementById('materialsName').value;
     const quantity = document.getElementById('mQuantity').value;
@@ -128,6 +126,48 @@ materialBtn.addEventListener('click', (event) => {
     }
   });
   
+
+// Fetching materials from firebase
+function addMaterialRow(material) {
+    const tableBody = document.getElementById("materialTableBody");
+    const newRow = document.createElement("tr");
+  
+    // Create table cells (TD elements) for each property
+    const nameCell = document.createElement("td");
+    nameCell.textContent = material.name;
+    const quantityCell = document.createElement("td");
+    quantityCell.textContent = material.quantity;
+    const unitsCell = document.createElement("td");
+    unitsCell.textContent = material.units;
+    const lastUpdatedCell = document.createElement("td");
+    lastUpdatedCell.textContent = material.lastUpdated;
+  
+    // Add update and delete buttons (optional)
+    const updateCell = document.createElement("td");
+    updateCell.innerHTML = "<button><i class='fa-regular fa-pen-to-square'></i></button>";
+    const deleteCell = document.createElement("td");
+    deleteCell.innerHTML = "<button><i class='fas fa-trash-alt'></i></button>";
+  
+    // Append cells to the new row
+    newRow.appendChild(nameCell);
+    newRow.appendChild(quantityCell);
+    newRow.appendChild(unitsCell);
+    newRow.appendChild(lastUpdatedCell);
+    newRow.appendChild(updateCell);
+    newRow.appendChild(deleteCell);
+  
+    // Append the new row to the table body
+    tableBody.appendChild(newRow);
+  }
+
+  
+onValue(materialsRef, (snapshot) => {
+    let materialData = Object.values(snapshot.val());
+    for (const material of materialData) {
+        addMaterialRow(material);
+      }
+    
+})
 console.log(app)
 
 
