@@ -1,11 +1,15 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"
-import { getDatabase } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"
+import { getDatabase, ref, onValue,push } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"
 
 const appSettings = {
-    databaseURL: "https://nail-it-8f766-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    databaseURL: "https://nail-it-d575b-default-rtdb.firebaseio.com/"
 }
 const app = initializeApp(appSettings)
 const db = getDatabase(app)
+
+const sitesRef = ref(db, 'sites')
+const materialsRef = ref(db, 'materials')
+
 
 const addSiteBtn = document.getElementById('addSiteButton')
 const addSiteForm = document.getElementById('siteFormContainer')
@@ -13,6 +17,7 @@ const siteCancelBtn = document.getElementById('cancelButton')
 const addSiteFormBtn = document.getElementById('add-site-btn')
 addSiteBtn.addEventListener('click', () =>{
     addSiteForm.style.display = 'block'
+    
 })
 siteCancelBtn.addEventListener('click', () =>
     {
@@ -25,8 +30,10 @@ function getNewSiteData(){
     const siteLocation = document.getElementById('siteLocation').value
     const buildingType = document.getElementById('buildingType').value
     const date = document.getElementById('metadataDate').value
-
-    alert(`${siteName}\n${siteLocation}\n${buildingType}\n${date}\nAdded successfully!`)
+    if (siteName && siteLocation && buildingType && date){
+        push(sitesRef, { name: siteName, location: siteLocation, buildingType: buildingType, date: date})
+    }
+    alert(`Added successfully!`)
 }
 addSiteFormBtn.addEventListener('click',getNewSiteData)
 
@@ -102,12 +109,25 @@ const materialBtn = document.getElementById('material-btn')
 materialCancelButton.addEventListener('click', () =>{
     materialForm.style.display = 'none'
 })
-materialBtn.addEventListener('click', () =>
-    {
-        materialForm.style.display = 'none'
+materialBtn.addEventListener('click', (event) => {
+    // Prevent default form submission
+    event.preventDefault();
+  
+    const materialName = document.getElementById('materialsName').value;
+    const quantity = document.getElementById('mQuantity').value;
+    const units = document.getElementById('mUnits').value;
+    const lastUpdated = document.getElementById('mLastUpdated').value;
+  
+    // Now access and process the form values
+    if (materialName && quantity && units && lastUpdated) {
+      push(materialsRef, { name: materialName, quantity, units, lastUpdated });
+      alert("Success");
+      materialForm.style.display = 'none';
+    } else {
+      alert("Please fill in all required fields");
     }
-)
-
+  });
+  
 console.log(app)
 
 
