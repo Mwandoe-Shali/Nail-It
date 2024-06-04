@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"
-import { getDatabase, ref, onValue,push, get, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"
+import { getDatabase, ref, onValue,push, get, update, remove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"
 
 const appSettings = {
     databaseURL: "https://nail-it-d575b-default-rtdb.firebaseio.com/"
@@ -161,6 +161,12 @@ materialBtn.addEventListener('click', () => {
         updateBtn.addEventListener('click', () =>
             {
                 update(materialToUpdate, {materialName:materialName.value, quantity:quantity.value, units:units.value, lastUpdated:lastUpdated.value})
+                .then(() => {
+                    alert("Material Updated successfully!")
+            })
+                .catch((error) => {
+                    alert(error.message)
+            })
                 updateForm.style.display = 'none'
             }
         )
@@ -172,10 +178,20 @@ materialBtn.addEventListener('click', () => {
   
     const deleteButton = deleteCell.querySelector("button");
     deleteButton.addEventListener("click", function() {
-      // Handle delete functionality (pass materialId)
-      console.log("Delete clicked for material:", materialId);
-      // You can implement logic to delete the material from Firebase using materialId
-    });
+        // Handle delete functionality (pass materialId)
+        const materialToDelete = ref(db, 'materials/' + materialId);
+      
+        remove(materialToDelete)
+          .then(() => {
+            alert("Material deleted successfully!");
+            // You can optionally update the table or UI to reflect the deletion
+          })
+          .catch((error) => {
+            console.error("Error deleting material:", error);
+            // Handle errors appropriately (optional)
+          });
+      });
+      
   
     // Append cells to the new row and the row to the table body
     newRow.appendChild(nameCell);
