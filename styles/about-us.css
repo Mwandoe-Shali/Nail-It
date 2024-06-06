@@ -8,7 +8,7 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     background: url('../assets/architechture.jpg');
-    backdrop-filter: brightness(0.6);
+    backdrop-filter: brightness(0.5);
     background-color: #ecf0f1;
     display: flex;
     flex-direction: column;
@@ -99,11 +99,12 @@ h2 {
     font-size: 24px;
     margin-bottom: 10px;
     color: antiquewhite;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 p {
-    font-size: 20px;
-    line-height: 1.5;
+    font-size: 19.5px;
+    /* line-height: 1.5; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 10px;
 }
