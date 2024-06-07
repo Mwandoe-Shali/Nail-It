@@ -256,8 +256,11 @@ function showDeleteSiteConfirmation(siteId) {
 // Function to delete a site and its associated materials
 function deleteSite(siteId) {
     const siteToDelete = ref(db, 'sites/' + siteId);
+
+    // Remove the site
     remove(siteToDelete)
         .then(() => {
+            // Remove materials associated with the site
             onValue(materialsRef, (snapshot) => {
                 const materialsData = snapshot.val();
                 if (materialsData) {
