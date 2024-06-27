@@ -1,0 +1,105 @@
+/* Basic Page Styling */
+body {
+    font-family: sans-serif;
+    margin: 0;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  nav li {
+    margin: 0 1rem;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  /* Sidebar Styling */
+  aside {
+    width: 250px;
+    background-color: #f0f0f0;
+    padding: 1rem;
+    float: left;
+    height: 100vh;
+    position: fixed; 
+  }
+  
+  aside h2 {
+    margin-top: 0;
+  }
+  
+  #siteList {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+    overflow-y: auto; /* Enable scroll if needed */
+  }
+  
+  #siteList li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Delete Icon */
+  .delete {
+    float: right;
+    cursor: pointer;
+    color: #f00;
+  }
+  
+  /* Main Content Section */
+  section {
+    margin-left: 270px; 
+    padding: 1rem;
+  }
+  
+  /* Table Styling */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f0f0f0;
+  }
+  
+  /* Buttons */
+  button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  /* Action Icons */
+  .update, .delete {
+    cursor: pointer;
+    margin-right: 0.5rem;
+  }
+  
+  .update {
+    color: #007bff;
+  }

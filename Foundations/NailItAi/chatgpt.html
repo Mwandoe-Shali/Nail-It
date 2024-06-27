@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nail It Dashboard</title>
+    <link rel="stylesheet" href="chatgpt.css">
+    <script src="https://kit.fontawesome.com/739d7a3cd3.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="nav-bar">
+            <div class="logo">Nail <i class="fa-solid fa-exclamation"></i> It</div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Dashboard</a>
+                <a href="#">About Us</a>
+            </div>
+            <div class="search-container">
+                <input type="text" placeholder="Search...">
+                <!-- <button><i class="fas fa-search"></i></button> -->
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard">
+        <div class="sidebar">
+            <h2>Sites Dashboard</h2>
+            <ul id="siteList">
+                <li><a href="#">Mombasa <i class="fas fa-trash-alt"></i></a></li>
+                <li><a href="#">Cape Town <i class="fas fa-trash-alt"></i></a></li>
+                <li><a href="#">Rabat <i class="fas fa-trash-alt"></i></a></li>
+                <li><a href="#">Algiers <i class="fas fa-trash-alt"></i></a></li>
+                <li><a href="#">Bungoma <i class="fas fa-trash-alt"></i></a></li>
+                <li><a href="#">Liberia <i class="fas fa-trash-alt"></i></a></li>
+                <li><a href="#">Ontananarivo <i class="fas fa-trash-alt"></i></a></li>
+                <li><a href="#">Dar Es Salaam <i class="fas fa-trash-alt"></i></a></li>
+                <li><a href="#">Lagos <i class="fas fa-trash-alt"></i></a></li>
+                <li><a href="#">Cairo <i class="fas fa-trash-alt"></i></a></li>
+            </ul>
+            <button id="addSiteButton">Add Site</button>
+        </div>
+
+        <div class="main-content">
+            <div class="content-header">
+                <h1>Materials</h1>
+                <button id="addMaterialButton">Add Material</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Material Name</th>
+                        <th>Quantity</th>
+                        <th>Units</th>
+                        <th>Last Updated</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="materialTableBody">
+                    <tr>
+                        <td>Cement</td>
+                        <td>23</td>
+                        <td>Bags(50kg)</td>
+                        <td>2024-05-25</td>
+                        <td><button><i class="fa-regular fa-pen-to-square"></i></button></td>
+                        <td><button><i class="fas fa-trash-alt"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td>Wheelbarrows</td>
+                        <td>4</td>
+                        <td>Unit</td>
+                        <td>2024-05-25</td>
+                        <td><button><i class="fa-regular fa-pen-to-square"></i></button></td>
+                        <td><button><i class="fas fa-trash-alt"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td>Wheelbarrows</td>
+                        <td>4</td>
+                        <td>Unit</td>
+                        <td>2024-05-25</td>
+                        <td><button><i class="fa-regular fa-pen-to-square"></i></button></td>
+                        <td><button><i class="fas fa-trash-alt"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td>Wheelbarrows</td>
+                        <td>4</td>
+                        <td>Unit</td>
+                        <td>2024-05-25</td>
+                        <td><button><i class="fa-regular fa-pen-to-square"></i></button></td>
+                        <td><button><i class="fas fa-trash-alt"></i></button></td>
+                    </tr>
+                    <!-- Additional rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="siteFormContainer" class="site-form-container">
+        <form id="siteForm" class="site-form">
+            <h2>Add New Site</h2>
+            <label for="siteName">Name:</label>
+            <input type="text" id="siteName" name="siteName" required>
+            <label for="siteLocation">Location:</label>
+            <input type="text" id="siteLocation" name="siteLocation" required>
+            <label for="buildingType">Type of Building:</label>
+            <input type="text" id="buildingType" name="buildingType" required>
+            <label for="metadataDate">Date:</label>
+            <input type="date" id="metadataDate" name="metadataDate" required>
+            <button type="submit">Add Site</button>
+            <button type="button" id="cancelButton">Cancel</button>
+        </form>
+    </div>
+
+    <script src="chatgpt.js"></script>
+</body>
+</html>

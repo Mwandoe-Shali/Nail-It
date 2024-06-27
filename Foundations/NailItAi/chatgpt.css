@@ -1,0 +1,241 @@
+/* Reset some default styles */
+body, h1, h2, h3, ul, li, table, th, td {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+header {
+    background-color: #000;
+    color: antiquewhite;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.nav-links a {
+    color: antiquewhite;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-container input {
+    padding: 5px;
+    font-size: 16px;
+    border: none;
+    border-radius: 3px;
+}
+
+.search-container button {
+    background-color: #ecf0f1;
+    border: none;
+    padding: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.dashboard {
+    display: flex;
+}
+
+.sidebar {
+    width: 220px;
+    max-width: fit-content;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    height: calc(100vh - 69px);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    margin: 5px;
+    margin-top: 0px;
+    color: antiquewhite;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #34495e;
+}
+
+.sidebar button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #d3a269;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.sidebar button:hover {
+    background-color: #b38150;
+}
+
+.main-content {
+    flex: 1;
+    background-color: #ecf0f1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.content-header h1 {
+    font-size: 24px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #2c3e50;
+    color: #d3a269;
+}
+
+td button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+td button:hover {
+    background-color: #b38150;
+    color: white;
+}
+
+#addMaterialButton {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #d3a269;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#addMaterialButton:hover {
+    background-color: #b38150;
+}
+
+.site-form-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.site-form {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.site-form h2 {
+    margin-bottom: 20px;
+}
+
+.site-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.site-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+.site-form button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.site-form button[type="button"] {
+    background-color: #e74c3c;
+    margin-left: 10px;
+}
+
+.site-form button:hover {
+    background-color: #2980b9;
+}
+
+.site-form button[type="button"]:hover {
+    background-color: #c0392b;
+}
